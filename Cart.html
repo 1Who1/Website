@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Your Cart</title>
+        <link rel="stylesheet" type="text/css" href="Styles.css">
+    </head>
+    <body>
+
+        <img class="logo" src="images/Logo.png" width="200" height="auto"/>
+		<nav>
+			<h1>Your Cart</h1>
+			<a href="index.html">Home Page</a>
+			<a href="Gallery.html">Gallery</a>
+			<a href="about_us.html">About Us</a>
+			<a href="Contact.html">Contact Us</a>
+            <a href="Events.html">Events</a>
+            <a href="Cart.html">View Cart</a>
+            <a href="LogIn.html">Login</a>
+        </nav>
+
+            <div id="cart-items"></div>
+            <h3 id="total-price"></h3>
+
+        <script>
+            function loadCart(){
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const container = document.getElementById('cart-items');
+                const totalDisplay = document.getElementById('total-price');
+                container.innerHTML = '';
+                let total = 0;
+
+                if (cart.length === 0){
+                    container.innerHTML = '<p> Your Cart Is Empty.</p>';
+                    totalDisplay.textContent = '';
+                    return;
+                }
+
+                cart.forEach((item, index) => {
+                    total += item.price;
+                    container.innerHTML += `
+                        <div class="cart-item">
+                            <strong>${item.title}</strong> : £${item.price}
+                            <button onclick="removeFromCart(${index})"> Remove</button>
+                        </div>
+                    `;
+                });
+
+                totalDisplay.textContent = 'Total: £' + total.toFixed(2);
+            }
+
+            function removeFromCart(index){
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.splice(index, 1);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                loadCart();
+            }
+
+            window.onload = loadCart;
+        </script>
+
+    </body>
+</html>

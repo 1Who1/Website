@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>LogIn</title>
+        <link rel="stylesheet" type="text/css" href="Styles.css">
+    </head>
+    <body>
+
+        <img class="logo" src="images/Logo.png" width="200" height="auto"/>
+		<nav>
+          <h1>Login Here</h1>
+			<a href="index.html">Home Page</a>
+			<a href="Gallery.html">Gallery</a>
+			<a href="about_us.html">About Us</a>
+			<a href="Contact.html">Contact Us</a>
+            <a href="Events.html">Events</a>
+            <a href="Cart.html">View Cart</a>
+            <a href="LogIn.html">Login</a>
+		</nav>
+
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="login-Form">
+            <div>
+                <label for="username">Username</label>
+                <input type="text" id="username" required />
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" required />
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <p id="error-message" style="color:red; display:none;">Invalid username or password</p>
+    </div>
+
+    <script>
+    document.getElementById('login-Form').addEventListener('submit', function(event) {
+        event.preventDefault();
+    
+        const validUsername = 'User';
+        const validPassword = 'Pass';
+    
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        if (username === validUsername && password === validPassword) {
+            alert('Login successful!');
+            window.location.href = 'Index.html';
+        } 
+        else {
+            document.getElementById('error-message').style.display = 'block';
+        }
+    });</script>
+</body>
+</html>
