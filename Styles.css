@@ -150,10 +150,6 @@ body {
 }
 
 
-input[type="checkbox"] {
-  display: none;
-}
-
 
 .modal {
   display: none;
@@ -166,18 +162,16 @@ input[type="checkbox"] {
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  cursor: pointer;
 }
 
-
-input[type="checkbox"]:checked + .modal {
-  display: flex;
-}
 
 .modal img {
   max-width: 80%;
   max-height: 80%;
-  margin: auto;
   object-fit: contain;
+  cursor: default;
+  pointer-events: none;
 }
 
 
@@ -190,6 +184,7 @@ input[type="checkbox"]:checked + .modal {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  z-index: 1001;
 }
 
 
